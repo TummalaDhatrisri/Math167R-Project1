@@ -1,0 +1,53 @@
+---
+title: "CLT Project 1: AI Prompts"
+author: "Dhatrisri Tummala"
+format: html
+editor: visual
+---
+
+## AI Prompts
+
+## 1. Q-Q Plot Code
+
+1.  **Problem**: After looking at the Q-Q Plot code, I had trouble applying it in different scenarios.
+2.  **Prompt**: How do I generate a Q-Q Plot in R code
+3.  **Follow-Up Prompts**
+    - What parts of the Q-Q Plot code should I change for each population?
+    - What parts of the Q-Q Plot should I change for the sample size?
+4.  **Purpose**: This helped me better understand how to apply it to each population.
+
+## 2. Error 1
+
+1.  **Problem**: I received an error when creating a histogram for the Binomial Small population.
+2.  **Prompt**: What does this error mean: "Error in plot.new() : figure margins too large"
+3.  **Follow-Up Prompts**
+    - How can I fix this error?
+4.  **Purpose**: While this was a minor error, I was able to limit when it happened in the future. This helped because I was able to code without getting stuck at this part.
+
+## 3. Error 2
+
+1.  **Problem**: When creating my Analysis HTML file, I had trouble when trying to render it because of the r code chunks.
+2.  **Prompt**: What does this error mean: "Warning in file(con, "r") : cannot open file 'Project1Code.R': No such file or directory Error in file(con, "r") : cannot open the connection"
+3.  **Follow-Up Prompts**
+    - How can I fix this error?
+    - What does the new code that is meant to fix this error mean?
+4.  **Purpose**: This was standing in between my HTML file properly running. It was important to find a way to keep the r code chunks because it would help in the interpretation process.
+
+## 4. Interpreting Results
+
+1.  **Problem**: During the analysis process, I was not fully aware of what the Q-Q Plot, kurtosis, and skewness represent.
+2.  **Prompt**: What do these statistics represent?
+3.  **Follow-Up Prompts**:
+    - What things should I look for when analyzing a Q-Q Plot?
+    - Does the plot represent normality when more straight?
+    - What does a negative number mean for skewness?
+4.  **Purpose**: This helped because I was able to interpret the results of the plot to be as accurate as possible.
+
+## 5. Statistical Findings
+
+1.  **Problem**: I was not sure what normality looked like for each of the different population means.
+2.  **Prompt**: What does normality look like for each population?
+3.  **Follow-Up Prompts**
+    - What does being more similar to the means represent?
+    - Why is Cauchy acting very drastically?
+4.  **Purpose**: This helped because I was able to interpret the results of the plot to be as accurate as possible.

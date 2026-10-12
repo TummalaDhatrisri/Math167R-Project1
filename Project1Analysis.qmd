@@ -1,0 +1,476 @@
+---
+title: "CLT Project 1: Monte Carlo Investigation"
+author: "Dhatrisri Tummala"
+format: html
+editor: visual
+---
+
+## 1. Introduction
+
+The purpose of this analysis was to examine how sampling distributions would behave when applied to 5 different populations. In order to achieve this, I used the Monte Carlo simulation with 10,000 repetitions for a sample size of 5, 10, 20, 30, 50, 100, and 200. In order to do so, I generated independent samples from Standard Normal, Six-Sided Die, Exponential, Binomial Small, and Cauchy populations. For each sample size, I calculated the sample mean, standard deviation, theoretical standard error, as well as histograms, normal Q-Q plots, skewness, kurtosis, and numerical summaries. 
+
+## 2. Results
+
+**Standard Normal Distribution**
+
+1.  Results
+
+    ```{r}
+    #| echo: false
+    #| warning: false
+    #| message: false
+    #| fig-show: hide
+
+    code_lines <- readLines("Project1.R")
+
+    end_line <- grep(
+      "FINAL COMPARISON TABLE",
+      code_lines,
+      fixed = TRUE
+    )[1]
+
+    eval(parse(text = code_lines[1:(end_line - 1)]))
+
+    knitr::kable(normal_summary, digits = 4)
+    ```
+
+2.  Interpretation
+
+    Since the means are very close to 0, it shows it is very close to normal. The theoretical standard errors and simulated standard deviations are also very similar. The skewness is very close to 0, indicating that the sampling distribution is mostly symmetrical. Finally the kurtosis is very close to 3, which means it is close to a normal distribution.
+
+3.  Histogram
+
+    ```{r}
+    hist(normal_results[["5"]],
+         main = "Standard Normal Sampling Distribution, n = 5", 
+         xlab = "Sample Mean")
+    ```
+
+    ```{r}
+    hist(normal_results[["30"]],
+         main = "Standard Normal Sampling Distribution, n = 30", 
+         xlab = "Sample Mean")
+    ```
+
+    ```{r}
+    hist(normal_results[["100"]],
+         main = "Standard Normal Sampling Distribution, n = 100", 
+         xlab = "Sample Mean")
+    ```
+
+    All of the histograms display a bell shape, which means they are normal.
+
+4.  Q-Q Plot
+
+    ```{r}
+    qqnorm(
+      normal_results[["5"]],
+      main = "Q-Q Plot: Standard Normal, n = 5"
+    )
+
+    qqline(normal_results[["5"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      normal_results[["30"]],
+      main = "Q-Q Plot: Standard Normal, n = 30"
+    )
+
+    qqline(normal_results[["30"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      normal_results[["100"]],
+      main = "Q-Q Plot: Standard Normal, n = 100"
+    )
+
+    qqline(normal_results[["100"]])
+    ```
+
+    The lines all follow a straight line for all sample sizes which means it is normal.
+
+5.  Conclusion
+
+    Since the original population is already normally distributed, the sampling distribution will be normal for every sample size, and not just when it equals 30.
+
+**Six-Sided Die Distribution**
+
+1.  Results
+
+    ```{r}
+    #| echo: false
+    #| warning: false
+    #| message: false
+    #| fig-show: hide
+
+    code_lines <- readLines("Project1.R")
+
+    end_line <- grep(
+      "FINAL COMPARISON TABLE",
+      code_lines,
+      fixed = TRUE
+    )[1]
+
+    eval(parse(text = code_lines[1:(end_line - 1)]))
+
+    knitr::kable(die_summary, digits = 4)
+    ```
+
+2.  Interpretation
+
+    For a fair six-sided die, the mean must be close to 3.5. The results of this are all very close to 3.5, suggesting the produced results are consistent with the theoretical mean. The simulated standard deviation vary drastically, however they are very similar to the theoretical standard error. The skewness is very close to 0, suggesting they are mostly symmetric. Finally, most of the kurtosis results are very close to 3.
+
+3.  Histogram
+
+    ```{r}
+    hist(die_results[["5"]],
+         main = "Six-Sided Die Sampling Distribution, n = 5", 
+         xlab = "Sample Mean")
+    ```
+
+    ```{r}
+    hist(die_results[["30"]],
+         main = "Six-Sided Die Sampling Distribution, n = 30", 
+         xlab = "Sample Mean")
+    ```
+
+    ```{r}
+    hist(die_results[["100"]],
+         main = "Six-Sided Die Sampling Distribution, n = 100", 
+         xlab = "Sample Mean")
+    ```
+
+    The histogram follows a bell shape for most of the given populations, meaning it is normal for all of these sample distributions.
+
+4.  Q-Q Plot
+
+    ```{r}
+    qqnorm(
+      die_results[["5"]],
+      main = "Q-Q Plot: Six-Sided Die, n = 5"
+    )
+
+    qqline(die_results[["5"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      die_results[["30"]],
+      main = "Q-Q Plot: Six-Sided Die, n = 30"
+    )
+
+    qqline(die_results[["30"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      die_results[["100"]],
+      main = "Q-Q Plot: Six-Sided Die, n = 100"
+    )
+
+    qqline(die_results[["100"]])
+    ```
+
+    The lines follow a straight line for all sample sizes, which means that it is normal.
+
+5.  Conclusion
+
+    The results seem to become more and more normal as the sample size increases and suggest that n=30 is enough for a sampling distribution to be approximately normal.
+
+**Exponential**
+
+1.  Results
+
+    ```{r}
+    #| echo: false
+    #| warning: false
+    #| message: false
+    #| fig-show: hide
+
+    code_lines <- readLines("Project1.R")
+
+    end_line <- grep(
+      "FINAL COMPARISON TABLE",
+      code_lines,
+      fixed = TRUE
+    )[1]
+
+    eval(parse(text = code_lines[1:(end_line - 1)]))
+
+    knitr::kable(exponential_summary, digits = 4)
+    ```
+
+2.  Interpretation
+
+    The theoretical mean of an exponential distribution is 1, which stays consistent throughout the results of the simulated means. The simulated standard deviations decrease as the sample size increases, however they stay similar to the theoretical standard errors. The skewness below shows a right skew, but as sample size increases, it becomes more normal. The kurtosis also moves closer to 3 as the sample size increases.
+
+3.  Histogram
+
+    ```{r}
+    hist(exponential_results[["5"]],
+         main = "Exponential Sampling Distribution, n = 5", 
+         xlab = "Sample Mean")
+    ```
+
+    ```{r}
+    hist(exponential_results[["30"]],
+         main = "Exponential Sampling Distribution, n = 30", 
+         xlab = "Sample Mean")
+    ```
+
+    ```{r}
+    hist(exponential_results[["100"]],
+         main = "Exponential Sampling Distribution, n = 100", 
+         xlab = "Sample Mean")
+    ```
+
+    There is a slight right skew for all histograms, meaning they are not normal.
+
+4.  Q-Q Plot
+
+    ```{r}
+    qqnorm(
+      exponential_results[["5"]],
+      main = "Q-Q Plot: Exponential, n = 5"
+    )
+
+    qqline(exponential_results[["5"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      exponential_results[["30"]],
+      main = "Q-Q Plot: Exponential, n = 30"
+    )
+
+    qqline(exponential_results[["30"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      exponential_results[["100"]],
+      main = "Q-Q Plot: Exponential, n = 100"
+    )
+
+    qqline(exponential_results[["100"]])
+    ```
+
+    The Q-Q plot does not follow a straight line for any of the sample sizes, meaning it is not normal.
+
+5.  Conclusion
+
+    Considering the results of the table, the histogram, and Q-Q plot, it can be inferred that n=30 is not enough for an exponential distribution. The best possible sample size for exponential is n=100;
+
+**Binomial Small**
+
+1.  Results
+
+    ```{r}
+    #| echo: false
+    #| warning: false
+    #| message: false
+    #| fig-show: hide
+
+    code_lines <- readLines("Project1.R")
+
+    end_line <- grep(
+      "FINAL COMPARISON TABLE",
+      code_lines,
+      fixed = TRUE
+    )[1]
+
+    eval(parse(text = code_lines[1:(end_line - 1)]))
+
+    knitr::kable(binomial_small_summary, digits = 4)
+    ```
+
+2.  Interpretation
+
+    For a binomial small distribution, the theoretical mean is 2, and the simulated means stayed very close to the number 2. The simulated standard deviation decreases as sample size increases, however the theoretical standard error stays stays similar to it. The skewness reports a slight right skew, but as the population increases, the skew decreases. The kurtosis becomes closer and closer to 3 as the samples size increases.
+
+3.  Histogram
+
+    ```{r}
+    hist(
+      binomial_small_results[["5"]],
+      main = "Binomial Small Sampling Distribution, n = 5",
+      xlab = "Sample Mean"
+    )
+    ```
+
+    ```{r}
+    hist(
+      binomial_small_results[["30"]],
+      main = "Binomial Small Sampling Distribution, n = 30",
+      xlab = "Sample Mean"
+    )
+    ```
+
+    ```{r}
+    hist(
+      binomial_small_results[["100"]],
+      main = "Binomial Small Sampling Distribution, n = 100",
+      xlab = "Sample Mean"
+    )
+    ```
+
+    There is a slight right skew in the n=5 histogram, but it becomes more normal as the sample size increases.
+
+4.  Q-Q Plot
+
+    ```{r}
+    qqnorm(
+      binomial_small_results[["5"]],
+      main = "Q-Q Plot: Binomial Small, n = 5"
+    )
+
+    qqline(binomial_small_results[["5"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      binomial_small_results[["30"]],
+      main = "Q-Q Plot: Binomial Small, n = 30"
+    )
+
+    qqline(binomial_small_results[["30"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      binomial_small_results[["100"]],
+      main = "Q-Q Plot: Binomial Small, n = 100"
+    )
+
+    qqline(binomial_small_results[["100"]])
+    ```
+
+    The Q-Q plot for n=5 is not a straight line. However, as the sample size increases, the lines straighten out, indicating normality.
+
+5.  Conclusion
+
+    From these results, one can infer that n=30 is sufficient for an approximately normal sampling distribution for this binomial small population.
+
+**Cauchy**
+
+1.  Results
+
+    ```{r}
+    #| echo: false
+    #| warning: false
+    #| message: false
+    #| fig-show: hide
+
+    code_lines <- readLines("Project1.R")
+
+    end_line <- grep(
+      "FINAL COMPARISON TABLE",
+      code_lines,
+      fixed = TRUE
+    )[1]
+
+    eval(parse(text = code_lines[1:(end_line - 1)]))
+
+    knitr::kable(cauchy_summary, digits = 4)
+    ```
+
+2.  Interpretation
+
+    A Cauchy distribution does not have a defined mean, but most of the means are centered around 0. The simulated standard deviation has a drastically large range, with no consistent decrease as the sample size increases. The skewness is also very large, showing a both a left and right skew from the summary results. The kurtosis is also unnaturally large.
+
+3.  Histogram
+
+    ```{r}
+    hist(
+      cauchy_results[["5"]],
+      main = "Cauchy Sampling Distribution, n = 5",
+      xlab = "Sample Mean"
+    )
+    ```
+
+    ```{r}
+    hist(
+      cauchy_results[["30"]],
+      main = "Cauchy Sampling Distribution, n = 30",
+      xlab = "Sample Mean"
+    )
+    ```
+
+    ```{r}
+    hist(
+      cauchy_results[["100"]],
+      main = "Cauchy Sampling Distribution, n = 100",
+      xlab = "Sample Mean"
+    )
+    ```
+
+    There is a left skew in all the histograms, which means they are not normal.
+
+4.  Q-Q Plot
+
+    ```{r}
+    qqnorm(
+      cauchy_results[["5"]],
+      main = "Q-Q Plot: Cauchy, n = 5"
+    )
+
+    qqline(cauchy_results[["5"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      cauchy_results[["30"]],
+      main = "Q-Q Plot: Cauchy, n = 30"
+    )
+
+    qqline(cauchy_results[["30"]])
+    ```
+
+    ```{r}
+    qqnorm(
+      cauchy_results[["100"]],
+      main = "Q-Q Plot: Cauchy, n = 100"
+    )
+
+    qqline(cauchy_results[["100"]])
+    ```
+
+    The Q-Q plot does not follow a straight line near the edges, meaning that they do not represent normalcy. As the sample size increases, it seems the line becomes less and less straight.
+
+5.  Conclusion
+
+    From these results, combined with the Q-Q plot and the histogram, it is inferred that n=30 is not an appropriate sample size.
+
+## 3. Is n=30 Enough?
+
+The simulations suggests that n=30 is accurate for some, but not for all populations.
+
+The **Standard Normal** population would benefit from **n=5**. This sampling distribution is already normal, meaning that any sample size, including the smallest, is sufficient for this population.
+
+The **Six-Sided Die** population would find sufficient results with a **n=30**. The mean, standard error, skewness, and kurtosis, all result in normality. The graphs and plots also result in a normal distribution.
+
+The **Exponential** population would most benefit from **n=100**. The histograms for n=5 and n=30 both showed a large right skew. The Q-Q plot do not follow a straight line, but becomes more and more straight as the sample size increases. This suggests that a larger sample size is more sufficient.
+
+The **Binomial Small** population would benefit from **n=30**. The n=5 histogram showed a slight skew, but by n=30, it evened out into a normal bell shape. The skewness is very close to 0, and the kurtosis is close to 3.
+
+The **Cauchy** population would **not benefit from any sample size**. This is because it does not ever converge into a normal sample size based on the table summary results, the histograms, and the Q-Q plots.
+
+## 4. Limitations
+
+**Limited Sample Size**
+
+The results are based on a finite number of simulations, meaning that the results could be more accurate with larger sample sizes. This simulation does not identify the exact sample size that would display when each population becomes normal.
+
+**Defining Normality**
+
+Since many of these population distributions do not have a general indicator of when it is approximately normal, it is hard to find accurate results. The results of the summary, histograms, and Q-Q plots will not always have consistent conclusions.
+
+**Specific Population Distributions**
+
+This experiment only follows the results of five population distributions: Standard Normal, Six-Sided Die, Exponential, Binomial Small, and Cauchy. Since it does not include other population distributions, it is unknown if their results will have different levels of skewness or variance. This means that the conclusions found in this experiment cannot be generalized to every population distribution.
+
+## 5. Conclusion
+
+The results demonstrate that the Central Limit Theorem does not apply to every sampling distribution. However, even after finding a sample size that works for each of the distributions, that also does not imply that it is perfect and works for other sampling distributions. This simulation shows why numerical evidence and graph analysis is most important when evaluating different distributions and normality.
