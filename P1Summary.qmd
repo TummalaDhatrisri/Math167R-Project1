@@ -1,0 +1,90 @@
+---
+title: "Central Limit Theorem Project"
+format: html
+editor: visual
+---
+
+## Central Limit Theorem Project: Summary of Findings
+
+### 1. Project Overview
+
+This project investigates the Central Limit Theorem (CLT) through simulations in R. The goal is to examine how the distribution of sample means changes as the sample sizes change.
+
+Five Population Distributions:
+
+- Standard Normal
+
+- Six-Sided Die
+
+- Exponential
+
+- Binomial Small
+
+- Cauchy
+
+For each population, I used a sample size of 5, 10, 20, 30, 50, 100, 200.
+
+### 2. Methodology
+
+A general simulation function was created to repeatedly:
+
+1.  Generate a random sample from a selected population.
+2.  Calculate the sample mean.
+3.  Repeat the process 10,000 times.
+4.  Store the resulting sample means for analysis.
+
+Histograms and normal Q-Q plots were also created to visually examine the sampling distributions.
+
+### 3. Important Findings
+
+#### Standard Normal Distribution
+
+- The sampling distribution of the mean is normally distributed regardless of the sample size.
+
+- Increasing sample size decreases the standard error.
+
+- This demonstrates that the CLT is consistent with an already normal population.
+
+#### Six-Sided Die Distribution
+
+- The original population is discrete and uniform, with possible outcomes ranging from 1 to 6.
+
+- As sample sizes increase, the distribution of sample means becomes increasingly bell-shaped.
+
+- The simulated means approach the theoretical population mean and the standard error decreases as the sample size increases
+
+#### Exponential Distribution
+
+- The original population is positively skewed.
+
+- With smaller sample sizes, the sampling distribution retains skewness.
+
+- As sample size increases, the sampling distribution becomes more symmetric and approaches a normal shape.
+
+#### Binomial Distribution
+
+- The population is discrete.
+
+- As sample size increases, the sampling distribution becomes more approximately normal.
+
+- The spread of the sample means decreases as sample size increases.
+
+#### Cauchy Distribution
+
+- The cauchy distribution is an important exception to the traditional CLT.
+
+- It does not have a finite theoretical mean or standard deviation.
+
+- Increasing the sample size does not produce the usual convergence of sample means toward a normal distribution.
+
+### 4. Overall Comparison
+
+The simulations demonstrate that the CLT generally applies to populations with finite means and variances, even when their original distributions are not normal.
+
+The standard normal, six-sided die, exponential, and binomial populations demonstrate how sample distributions become increasingly normal as sample size increases. The Cauchy distribution behaves differently because it does not have a finite mean or variance.
+
+### 5. Conclusion
+
+This project demonstrates the importance of sample size when studying sampling distributions. Through 10,000 simulations across five different populations, the results provide a visual and numerical comparison of how sample means behave under different distributional conditions.
+
+The most important takeaway is that the original population does not necessarily need to be normally distributed for the sampling distribution of the mean to approach normality. However, the Cauchy distribution demonstrates why the assumptions of the CLT matter.
